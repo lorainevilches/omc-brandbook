@@ -1,0 +1,214 @@
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(17,17,17,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--borda);
+  padding: 0 var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.nav-marca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.nav-barras { display: flex; gap: 3px; align-items: center; }
+
+.nav-barra {
+  width: 4px;
+  height: 20px;
+  border-radius: 1px;
+  transform: skewX(-15deg);
+}
+
+.nav-nome {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto-claro);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--texto-secundario);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--texto-claro); }
+
+@media (max-width: 700px) { .nav-links { display: none; } }
+
+/* CAPA */
+.capa {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(40px, 6vw, 80px) var(--pad);
+  position: relative;
+  overflow: hidden;
+}
+
+.capa::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: clamp(300px, 50vw, 600px);
+  height: clamp(300px, 50vw, 600px);
+  background: radial-gradient(circle, rgba(240,120,32,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.capa::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: clamp(200px, 35vw, 400px);
+  height: clamp(200px, 35vw, 400px);
+  background: radial-gradient(circle, rgba(0,188,212,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.capa-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.capa-conteudo { max-width: 700px; }
+
+.capa-titulo {
+  font-size: clamp(40px, 10vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.capa-titulo span { color: var(--laranja); }
+
+.capa-descricao {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--texto-secundario);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+.capa-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* SEÇÕES */
+section {
+  padding: clamp(56px, 8vw, 96px) var(--pad);
+  border-top: 1px solid var(--borda);
+}
+
+.secao-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--texto-secundario);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.secao-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--borda);
+  max-width: 200px;
+}
+
+.secao-titulo {
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.secao-texto {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--texto-secundario);
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+/* GRIDS */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2px;
+}
+
+.grid--mt-sm { margin-top: 16px; }
+
+/* RODAPÉ */
+footer {
+  padding: clamp(40px, 6vw, 64px) var(--pad);
+  border-top: 1px solid var(--borda);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-marca { display: flex; align-items: center; gap: 10px; }
+.footer-nome  { font-size: 18px; font-weight: 700; }
+
+.footer-info {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--texto-secundario);
+  letter-spacing: 2px;
+  text-align: right;
+  line-height: 1.8;
+}
+
+@media (max-width: 480px) {
+  .footer-info { text-align: left; }
+  .capa-topo .label:last-child { display: none; }
+}
